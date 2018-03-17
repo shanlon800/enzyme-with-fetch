@@ -7,6 +7,27 @@ class VegetableIndexContainer extends Component {
       vegetables: []
     }
   }
+
+  componentWillMount(){
+    fetch('api/v1/vegetables')
+    .then(response => {
+      if (response.ok){
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let vegetableList = body;
+      this.setState({vegetables: vegetableList});
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+
   render() {
     return(
       <h3>Vegetable Index Container</h3>
