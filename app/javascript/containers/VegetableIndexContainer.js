@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import VegetableTile from '../components/VegetableTile'
+
 class VegetableIndexContainer extends Component {
   constructor(props) {
     super(props)
@@ -29,8 +31,21 @@ class VegetableIndexContainer extends Component {
 
 
   render() {
+    let vegetables = this.state.vegetables.map(veg => {
+      return(
+        <VegetableTile
+        vegetable={veg.name}
+        key={veg.id}
+        />
+
+      )
+    })
+
     return(
-      <h3>Vegetable Index Container</h3>
+      <div>
+        <h3>Vegetable Index Container</h3>
+        {vegetables}
+      </div>
     )
   }
 }
