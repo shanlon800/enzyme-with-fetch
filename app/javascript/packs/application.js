@@ -13,11 +13,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import App from '../App'
+import store from '../stores/store';
 
 let element = document.getElementById('app')
 if(element){
   ReactDOM.render(
-    <App/>,
+    <App />,
     element
   );
 }
