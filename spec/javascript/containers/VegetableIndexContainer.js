@@ -1,9 +1,46 @@
-// import VegetableIndexContainer from '../../../app/javascript/containers/VegetableIndexContainer'
-// import VegetableTile from '../../../app/javascript/components/VegetableTile'
-// const fetchMock = require('fetch-mock')
-// // require('isomorphic-fetch')
-// // require('fetchMock')
-//
+import VegetableIndexContainer from '../../../app/javascript/containers/VegetableIndexContainer'
+
+import fetchMock from 'fetch-mock'
+
+
+describe('Vegetable Index Container', () => {
+  let wrapper;
+  let food;
+
+  beforeEach(() => {
+    food = [
+      {id: 1, name: 'Carrot'}
+    ]
+    fetchMock.spy('/api/v1/vegetables', {
+      status: 200,
+      body: food
+    });
+    wrapper = mount(
+      <VegetableIndexContainer />
+    )
+  })
+
+  afterEach(fetchMock.restore)
+
+  describe('listing', () => {
+    it('renders an h2', () => {
+      expect(wrapper.find('h2')).toBePresent()
+      expect(wrapper.find('h2').text()).toEqual('Vegetable Index Container')
+    })
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+
 // describe('VegetableIndexContainer', () => {
 //   let wrapper,
 //   wrapper2,
