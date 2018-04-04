@@ -33,10 +33,8 @@ class VegetableIndexContainer extends Component {
   render() {
     let vegetables = this.state.vegetables.map(veg => {
       return(
-        <VegetableTile
-        name={veg.name}
-        key={veg.id}
-        />
+
+        <li key={veg.id}>{veg.name}</li>
 
       )
     })
